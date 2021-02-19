@@ -34,7 +34,7 @@ jobs:
         pip install --upgrade platformio
     - name: Run PlatformIO
       run: |
-        pio ci -c platformio.ini --lib="lib/CSE7766" --board=esp12e
+        pio ci -c platformio.ini --lib="lib/CSE7766" --keep-build-dir --board=esp12e
         ls -lah
       env:
         PLATFORMIO_CI_SRC: ${{ matrix.app }}
