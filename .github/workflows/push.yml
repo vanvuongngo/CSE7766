@@ -1,0 +1,40 @@
+# Check the build status for the nighly builder, release or pull request
+
+name: CSE7766 build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - name: Cache PlatformIO
+      uses: actions/cache@v2
+      with:
+        path: ~/.platformio
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+    - name: Set up Python
+      uses: actions/setup-python@v2
+    - name: Run PlatformIO
+      run: pio ci --board=esp12e
+#    - uses: actions/setup-node@v2
+#      with:
+#        node-version: '14'
+#    - name: Cache Node
+#      uses: actions/cache@v2
+#      with:
+#        path: ~/.npm
+#        key: ${{ runner.os }}-${{ hashFiles('code/package-lock.json', 'code/package.json') }}
+#    - name: WebUI tests
+#      run: |
+#        ./ci_install.sh webui
+#        ./ci_script.sh webui
