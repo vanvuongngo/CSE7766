@@ -42,8 +42,12 @@ https://github.com/JoaoLopesF/RemoteDebug
 - copy the directory `lib/CSE7766` into your arduino library directory
 - open `example/CSE7766_basic.ino`
 
-## Copyright (C) 2016-2018 by Xose Pérez <xose dot perez at gmail dot com>
+## License
+
+Copyright (C) 2016-2018 by Xose Pérez <xose dot perez at gmail dot com>
+  
 Copyright (C) 2018 by Ingeniuske  <ingeniuske at gmail dot com>
+  
 Copyright (C) 2021 by Van Vuong Ngo https://github.com/vanvuongngo
 
 
