@@ -35,7 +35,7 @@ jobs:
     - name: Run PlatformIO
       run: |
         pio ci -c platformio.ini --lib="lib/CSE7766" --board=esp12e
-        ls
+        ls -lah
       env:
         PLATFORMIO_CI_SRC: ${{ matrix.app }}
 #    - name: Create Release
