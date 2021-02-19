@@ -25,13 +25,15 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/.platformio
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+        key: ${{ runner.os }}-${{ hashFiles('platformio.ini') }}
     - name: Set up Python
       uses: actions/setup-python@v2
     - name: Install PlatformIO
       run: |
         python -m pip install --upgrade pip
         pip install --upgrade platformio
+    - name: Install library dependencies
+        run: pio lib -g install "joaolopesf/RemoteDebug@3.0.5"
     - name: Run PlatformIO
       run: pio ci --lib="lib/CSE7766" --board=esp12e
       env:
