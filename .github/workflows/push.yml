@@ -39,7 +39,7 @@ jobs:
       env:
         PLATFORMIO_CI_SRC: ${{ matrix.app }}
     - name: Set Version ENV
-      run: echo '::set-env name=VERSION::'$(cat VERSION)
+      run: echo "VERSION=$(cat VERSION)" >> $GITHUB_ENV
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
