@@ -14,23 +14,14 @@ https://github.com/xoseperez/espurna/blob/dev/code/espurna/sensors/CSE7766Sensor
 ## ATTENTION!
 
 The serial port ground from the Sonoff device is directly connected to AC-mains.
-Be carfull it could potentially destroy your devices if connected directly!
 
-For this reason using a telnet as remote debug connection from Joao Lopes and OTA updates.
+Be carefull it could potentially destroy your devices if connected directly!
+
+For this reason using a telnet as remote debug connection from Joao Lopes and OTA updates:
+
 https://github.com/JoaoLopesF/RemoteDebugApp or
+
 https://github.com/JoaoLopesF/RemoteDebug
-
-## Using Arduino IDE
-
-- copy the directory `lib/CSE7766` into your arduino library directory
-- open `example/CSE7766_basic.ino`
-
-## Using Visual Studio Code with platformIO
-
-- modify `src/main.cpp`
-- comment out upload_protocol and upload_port if you want to upload over serial port 
-- for production if you want to disable debug tool or OTA see platformio.ini
-- execute build and flash firmware
 
 ## Using precompiled firmware
 
@@ -38,6 +29,18 @@ https://github.com/JoaoLopesF/RemoteDebug
 - install esptool.py` see https://github.com/espressif/esptool
 - call `esptool.py flash_id` to receive the serial port
 - flash e.g. `esptool.py --port /dev/ttyUSB0 write_flash 0x0 cse7766.bin`
+
+## Using Visual Studio Code with PlatformIO
+
+- modify `src/main.cpp`
+- comment out upload_protocol and upload_port if you want to upload over serial port 
+- for production if you want to disable debug tool or OTA see platformio.ini
+- execute build and flash firmware
+
+## Using Arduino IDE
+
+- copy the directory `lib/CSE7766` into your arduino library directory
+- open `example/CSE7766_basic.ino`
 
 ## Copyright (C) 2016-2018 by Xose Pérez <xose dot perez at gmail dot com>
 Copyright (C) 2018 by Ingeniuske  <ingeniuske at gmail dot com>
