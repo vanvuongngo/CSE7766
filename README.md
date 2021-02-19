@@ -30,11 +30,12 @@ https://github.com/JoaoLopesF/RemoteDebug
 - modify `src/main.cpp`
 - comment out upload_protocol and upload_port if you want to upload over serial port 
 - for production if you want to disable debug tool or OTA see platformio.ini
-- execute build and flash
+- execute build and flash firmware
 
 ## Using precompiled firmware
 
-- install esptool.py see https://github.com/espressif/esptool
+- download the firmware see https://github.com/vanvuongngo/CSE7766/releases
+- install esptool.py` see https://github.com/espressif/esptool
 - call `esptool.py flash_id` to receive the serial port
 - flash e.g. `esptool.py --port /dev/ttyUSB0 write_flash 0x0 cse7766.bin`
 
