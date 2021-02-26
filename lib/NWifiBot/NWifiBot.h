@@ -12,12 +12,10 @@ class NWifiBot
 {
 
 public:
+  NWifiBot() {};
   virtual ~NWifiBot();
 
   static void begin(const String & hostname);
-
-protected:
-  NWifiBot() {};
 
 private:
   static bool _ready;
