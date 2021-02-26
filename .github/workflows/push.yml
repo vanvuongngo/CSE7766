@@ -36,8 +36,8 @@ jobs:
       run: |
         pio ci -c platformio.ini --lib="lib/CSE7766" --lib="lib/NWifiBot" --keep-build-dir --build-dir firmware --board=esp12e
         ls -lah firmware
-#      env:
-#        PLATFORMIO_CI_SRC: src/${{ matrix.app }}.cpp
+      env:
+        PLATFORMIO_CI_SRC: src/
     - name: Set Version ENV
       run: echo "VERSION=$(cat VERSION)" >> $GITHUB_ENV
     - name: Create Release
