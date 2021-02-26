@@ -14,7 +14,7 @@ class NWifiBot
 public:
   virtual ~NWifiBot();
 
-  static void begin(String hostname);
+  static void begin(const String & hostname);
 
 protected:
   NWifiBot() {};
@@ -26,7 +26,7 @@ private:
   static const char * _ssid;
   static const char * _password;
 
-  static void _setupConnection(String hostname);
+  static void _setupConnection(const String & hostname);
 
 };
 

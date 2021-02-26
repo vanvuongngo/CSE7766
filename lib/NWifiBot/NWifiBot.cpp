@@ -17,14 +17,14 @@ NWifiBot::~NWifiBot()
 {
 }
 
-void NWifiBot::begin(String hostname)
+void NWifiBot::begin(const String & hostname)
 {
     _setupConnection(hostname);
 
     _ready = true;
 }
 
-void NWifiBot::_setupConnection(String hostname)
+void NWifiBot::_setupConnection(const String & hostname)
 {
   // Create a network
   Serial.print("Creating access point named: ");
