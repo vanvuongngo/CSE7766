@@ -46,6 +46,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <ArduinoOTA.h> // https://docs.platformio.org/en/latest/platforms/espressif8266.html?highlight=ota#over-the-air-ota-update
 #endif
 #include "CSE7766.h"
+#include "NWifiBot.h"
 
 // GPIOs
 #define RELAY_PIN 12
@@ -82,41 +83,7 @@ void setup()
   myCSE7766.setRX(1);
   myCSE7766.begin(); // will initialize serial to 4800 bps
 
-  // Create a network
-  Serial.print("Creating access point named: ");
-  Serial.println(ssid);
-  if (!WiFi.softAP(ssid, password))
-  {
-    Serial.println("Failed to create access point");
-    // reset
-  }
-  Serial.print("IP address: ");
-  IPAddress apIP = WiFi.softAPIP();
-  Serial.println(apIP);
-
-/*
-// TODO: setup credentials over a webserver and connect as a client
-    // WiFi connection
-    WiFi.begin(ssid, password);
-    Serial.println("");
-    // Wait for connection
-    while (WiFi.status() != WL_CONNECTED) {
-      delay(500);
-      Serial.print(".");
-    }
-    Serial.print("IP address: ");
-    IPAddress apIP = WiFi.getIP();
-    Serial.println(apIP);
-*/
-  // Register host name in WiFi and mDNS
-  String hostNameWifi = HOST_NAME;
-  hostNameWifi.concat(".local");
-  WiFi.hostname(hostNameWifi);
-  if (MDNS.begin(HOST_NAME))
-  {
-    Serial.print("* MDNS started. Hostname -> ");
-    Serial.println(HOST_NAME);
-  }
+  NWifiBot::begin(HOST_NAME);
 
 #ifndef DEBUG_DISABLED
   // Initialize the telnet server of RemoteDebug
