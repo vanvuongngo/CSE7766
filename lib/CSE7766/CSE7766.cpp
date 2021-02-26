@@ -16,7 +16,6 @@ CSE7766::~CSE7766()
 {
     if (_serial)
         delete _serial;
-    //end();
 }
 
 void CSE7766::setRX(unsigned char pin_rx)
@@ -137,10 +136,8 @@ double CSE7766::getReactivePower()
     {
         return sqrt(apparent * apparent - active * active);
     }
-    else
-    {
-        return 0;
-    }
+
+    return 0;
 }
 
 double CSE7766::getPowerFactor()
@@ -178,9 +175,7 @@ void CSE7766::begin()
 
 void CSE7766::handle()
 {
-    if (!_ready)
-        return;
-    _read();
+    if (_ready) _read();
 }
 
 // ---------------------------------------------------------------------
@@ -370,10 +365,8 @@ bool CSE7766::_serial_available()
     {
         return Serial.available();
     }
-    else
-    {
-        return _serial->available();
-    }
+
+    return _serial->available();
 }
 
 void CSE7766::_serial_flush()
@@ -382,10 +375,8 @@ void CSE7766::_serial_flush()
     {
         return Serial.flush();
     }
-    else
-    {
-        return _serial->flush();
-    }
+
+    return _serial->flush();
 }
 
 uint8_t CSE7766::_serial_read()
@@ -394,8 +385,6 @@ uint8_t CSE7766::_serial_read()
     {
         return Serial.read();
     }
-    else
-    {
-        return _serial->read();
-    }
+
+    return _serial->read();
 }

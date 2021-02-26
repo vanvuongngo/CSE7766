@@ -1,5 +1,5 @@
 /*
-CSE7766_basic with WiFi Access Point
+nbot with WiFi Access Point and UI
 
 Created stand alone library for the Sonoff Pow R2 power switch with energy monitor witch uses the CSE7759/ CSE7766 as power monitor sensor.
 Based upon the excelent espurna platform of Xose Pérez "Home automation firmware for ESP8266-based devices"
@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#ifdef BASIC
+#ifdef NBOT
 
 #include <ESP8266WiFi.h>
 #include <DNSServer.h>
@@ -59,10 +59,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef SENSOR_DEBUG
 #define SENSOR_DEBUG 1
 #endif
-
-// SSID and password
-const char *ssid = "sonoff";
-const char *password = "";
 
 // Host mDNS
 #define HOST_NAME "sonoff"
