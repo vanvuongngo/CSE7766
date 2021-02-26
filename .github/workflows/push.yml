@@ -8,10 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        app: [main, nbot]
-
     steps:
     - uses: actions/checkout@v2
     - name: Cache pip
@@ -56,8 +52,18 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: firmware/.pio/build/${{ matrix.app }}/firmware.bin
-        asset_name: ${{ matrix.app }}.bin
+        asset_path: firmware/.pio/build/basic/firmware.bin
+        asset_name: basic.bin
+        asset_content_type: application/octet-stream
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: firmware/.pio/build/nbot/firmware.bin
+        asset_name: nbot.bin
         asset_content_type: application/octet-stream
 #
 #    - uses: actions/setup-node@v2
