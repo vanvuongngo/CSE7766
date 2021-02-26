@@ -36,8 +36,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#ifdef NBOT
-
 #include <ESP8266WiFi.h>
 #include <DNSServer.h>
 #include <ESP8266mDNS.h>
@@ -176,5 +174,3 @@ void loop()
            myCSE7766.getEnergy());
   }
 }
-
-#endif
